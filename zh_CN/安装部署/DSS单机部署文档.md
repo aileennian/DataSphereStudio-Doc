@@ -83,6 +83,8 @@ python -m pip install matplotlib
 -   [wedatasphere-dss-x.x.x-dist.tar.gz](https://github.com/WeBankFinTech/DataSphereStudio/releases)
 -   [wedatasphere-dss-web-x.x.x-dist.zip](https://github.com/WeBankFinTech/DataSphereStudio/releases)
 
+> 1.0.0版本是全家桶模式，下载这的文件结构如3
+
 3.  下载 DSS & LINKIS 一键安装部署包，并解压。以下是一键安装部署包的层级目录结构：
 
 ```text
@@ -93,7 +95,7 @@ python -m pip install matplotlib
  ├── wedatasphere-dss-web-x.x.x-dist.zip # DSS前端安装包
  ├── wedatasphere-linkis-x.x.x-dist.tar.gz # Linkis安装包
 ```
-
+ 
 ### d. 修改配置
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;打开conf/config.sh，按需修改相关配置参数：
@@ -274,6 +276,14 @@ HIVE_PASSWORD=xxx
 ```bash
 sh bin/install.sh
 ```
+> 注意:
+> 一些linux版本，可能安装无法顺利进行，可按如下进行
+> 1. 手动安装nginx
+> 2. 分别建dss、web、linkis文件夹，将三个压缩包放在不同的文件夹下，分别安装
+>    （links、web、dss的安装方式都可以参考linkis的安装模式, 所以建议安装dss之后，走一遍linkis的安装)
+> 3. 注册web文件夹下网关的port如果是20401 改为9001，要和linkis内的网关port相同
+> 安装结束后，web的前后端都是由nginx向外提供服务，所以其他port都可以不需要对外，包括网关。
+> 对于dss内置的linkis的是1.0.2版本，groupId等还是微众银行，还不是提交到apache孵化，同时内部有一些配置和1.0.3版本不同，请在dss1.0.0，不用全家桶安装也请用1.0.2版本的linkis
 
 ### 2. 安装步骤
 
